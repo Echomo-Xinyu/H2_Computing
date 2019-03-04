@@ -1,0 +1,1 @@
+print(ord('h')-ord('a'))

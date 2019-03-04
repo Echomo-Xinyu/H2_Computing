@@ -1,0 +1,29 @@
+h1 {
+    color: brown;
+    font: Arial;
+    background-color: black;
+    border: yellow 4px solid;
+    /* border-width: 4 px; */
+    text-align: center;
+}
+
+h2 {
+    font-size: 2 em;
+    font-family: Arial, sans-serif;
+    font-style: italic;
+}
+
+.STUPID {
+    color: green;
+    font-size: 8px;
+}
+
+.Education {
+    /* font-size: 10px; */
+    color: red;
+}
+
+#SPECIAL {
+    font: italic;
+    font-family: 'Courier New';
+}

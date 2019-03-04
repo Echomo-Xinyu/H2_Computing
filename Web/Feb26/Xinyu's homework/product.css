@@ -1,0 +1,19 @@
+body {
+    background: grey;
+}
+
+#container {
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.description {
+    font-size: 18px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+}
