@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    .container {
+        height: 400px;
+        width: 600px;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        /* justify-content: flex-end; horizontal alignment */
+        /* align-items: center; align in vertical direction */
+    }
+    .a1 {
+        background-color: red;
+        width: 100px; /* mnimum size */
+        height: 50px;
+        margin: 2px;
+        flex: 2; /* to specify ratio size */
+    }
+    .a2 {
+        background-color: blue;
+        width: 100px;
+        height: 50px;
+        margin: 2px;
+        flex: 1;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="a1"></div>
+        <div class="a2"></div>
+        <div class="a2"></div>
+    </div>
+    
+</body>
+</html>
