@@ -1,5 +1,8 @@
 # a multiply calculator, n * m, m1=m2
 
+# the answer is incorrect as it ignores the negative
+# integer input
+
 def multiply1(n, m):
     if n==1:
         return m
