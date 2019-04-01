@@ -34,5 +34,6 @@ def countRect(arr):
                         count += 1
     return count
 
-coodArr = [(0,1), (1,0), (1,1), (1,2), (2,1), (2,2)]
+# coodArr = [(0,1), (1,0), (1,1), (1,2), (2,1), (2,2)]
+coodArr = [(0, 2), (1, 0), (1,4), (2,0)]
 print(countRect(coodArr))
