@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0:">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        form {
+            width: 50%;
+            margin: auto;
+            border: black solid 1px;
+            border-radius: 2em;
+        }
+
+        /* tr {
+            width: 100%;
+            padding: 0.5em;
+            display: flex;
+            margin: auto;
+            align-content: center;
+        }
+
+        td {
+            width: 50%;
+            display: flex;
+            margin: auto;
+        } */
+        .container {
+            width: 50%;
+            margin: auto;
+        }
+        .header {
+            width: 30%;
+            text-align: end;
+        }
+
+        .submission {
+            align-self: auto;
+        }
+
+        input {
+            padding: 0.5em;
+            justify-content: center;
+
+        }
+
+        label {
+            padding: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#" method="GET">
+        <table class="container">
+        <tr>
+            <td>
+                <h3>Product</h3>
+            </td>
+        </tr>
+        <div>
+            <tr>
+                <td class="header">
+                    <label>Name:</label>
+                </td>
+                <td class="submission">
+                    <input type="text" id="Name" name="Name">
+                </td>
+            </tr>
+        </div>
+        <div>
+            <tr>
+                <td class="header">
+                    <label>Price:</label>
+                </td>
+                <td class="submission">
+                    <input type="text" id="Price" name="Price">
+                </td>
+            </tr>
+        </div>
+        <div>
+            <tr>
+                <td class="header">
+                    <label>Product Description:</label>
+                </td>
+                <td class="submission">
+                    <textarea id="Project-description" name="Project-description"></textarea>
+
+                </td>
+            </tr>
+        </div>
+        <div>
+
+            <tr>
+                <td class="header">
+                    <label>Product image:</label>
+                </td>
+                <td class="submission">
+                    <input type="file" id="Project-image" name="Project-image">
+                </td>
+            </tr>
+
+        </div>
+        <div>
+            <tr>
+                <td class="header"></td>
+                <td class="submission">
+                    <input type="button" value="Add Product" id="submit-button">
+                </td>
+            </tr>
+        </div>
+    </table>
+    </form>
+</body>
+
+</html>
