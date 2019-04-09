@@ -1,0 +1,20 @@
+form {
+    width: 50%;
+    margin: auto;
+    border: black solid 1px;
+    border-radius: 2em;
+}
+.row {
+    padding: 0.5em;
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    padding: 0.5em;
+    justify-content: center
+}
+
+label {
+    padding: 0.5em;
+}
