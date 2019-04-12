@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0:">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grade calculator</title>
+    <link rel="stylesheet" type="text/css" href="static/calculator.css">
+</head>
+
+<body>
+    <div class="line">
+        <div class="heading">Final Score Calculator</div>
+    </div>
+    <div class="empty"></div>
+    <div class="line">
+        <div class="heading_b">
+            <label>Marks(out of 100)</label>
+        </div>
+        <div class="heading_b">
+            <label>Weightages(%)</label>
+        </div>
+    </div>
+    <form action="submit" method="POST">
+        <div class="line">
+            <input class="content" type="text" id="mark1" name="mark1">
+            <input class="content" type="text" id="weight1" name="weight1">
+        </div>
+        <div class="line">
+            <input class="content" type="text" id="mark2" name="mark2">
+            <input class="content" type="text" id="weight2" name="weight2">
+        </div>
+        <div class="line">
+            <input type="submit" id="submit-button">
+        </div>
+    </form>
+</body>
+</html>

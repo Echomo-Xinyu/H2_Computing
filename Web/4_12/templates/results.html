@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0:">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grade calculator</title>
+    <style>
+        .final {
+            font: bolder;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        Mark 1: {{ form["mark1"] }}, Weight 1: {{ form["weight1"] }}
+    </div>
+    <div>
+        Weightage 2: {{ form["mark2"] }}, Mark 1: {{ form["weight2"] }}
+    </div>
+    <div class="final">
+        SCORE: {{ score }}
+    </div>
+</body>
+
+</html>
