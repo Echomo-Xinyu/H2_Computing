@@ -24,7 +24,7 @@ class Node():
 
 class linkedList():
     def __init__(self):
-        self._first = None
+        self._root = None
 
     def getRoot(self):
         return self._first
@@ -33,28 +33,28 @@ class linkedList():
         self._first = Node
 
     def isEmpty(self):
-        return self.getRoot() == None
+        return self._root == None
 
     def insertFront(self, data):
         newNode = Node(data)
-        newNode.next = self.getRoot()
+        newNode.setNext(self._root)
         self.setRoot(newNode)
 
     def insertBack(self, data):
         newNode = Node(data)
-        if self.getRoot() == None:
+        if self._root == None:
             self.setRoot(newNode)
         else:
-            current = self.getRoot()
+            current = self._root
             # line below is equivalent to while current.next != None:
             while current.getNext():
                 current = current.getNext()
             current.setNext(newNode)
 
     def exists(self, data):
-        if not self.getRoot():
+        if not self._root:
             return False
-        current = self.getRoot()
+        current = self._root
         while current and current.getData() != data:
             current = current.getNext()
         # if check the data here, it may throw a exception as it may be a None, and None.data gives a exception 
@@ -65,18 +65,18 @@ class linkedList():
             return True
 
     def getNode(self, data):
-        if not self.getRoot():
+        if not self._root:
             return None
-        current = self.getRoot()
+        current = self._root
         while current and current.getData() != data:
             current = current.getNext()
         return current
 
 
     def delete(self, data):
-        if not self.getRoot():
+        if not self._root:
             return False
-        current = self.getRoot()
+        current = self._root
         if current.getData() == data:
             self.setRoot(current.next)
             return True
@@ -90,11 +90,11 @@ class linkedList():
                 return False
 
     def print(self):
-        if not self.getRoot():
+        if not self._root:
             return "Empty"
         else:
             result = ""
-            current = self.getRoot()
+            current = self._root
             while current:
                 result += str(current) + "\n"
                 current = current.getNext()

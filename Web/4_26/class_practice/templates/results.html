@@ -1,0 +1,21 @@
+<div>
+    Your height is : {{ height }}
+</div>
+<div>
+    Your weight is : {{ weight }}
+</div>
+
+{% if bmi > 25 %}
+<div>
+    <!-- Your BMI is: {{ bmi }} -->
+    You are over weight
+</div>
+{% elif bmi < 19 %}
+<div>
+    You are under weight
+</div>
+{% else %}
+<div>
+    You are healthy!
+</div>
+{% endif %}

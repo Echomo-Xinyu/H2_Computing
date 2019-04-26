@@ -42,3 +42,9 @@ L2 = L1[:] # L2 = L1[0:len(L1)]
 L2[1] = 100
 print(L1[1])
 # output: 2
+
+print(L1==L2)
+# True
+print(L1 is L2)
+# False
+# for creating a copy and not referring to the same 
