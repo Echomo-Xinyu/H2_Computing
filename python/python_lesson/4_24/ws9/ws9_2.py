@@ -94,8 +94,7 @@ class DoublyLinkedList:
                 self.setRoot(current.getNextNode())
                 # check whether the DLLL still has values to avoid an exception
                 if not self._root:
-                    noneNode = DListNode(None)
-                    self._root.setPrevNode(noneNode)
+                    self._root.setPrevNode(None)
             else:
                 current.getPrevNode().setNextNode(current.getNextNode())
                 # check whether the node is not None, to avoid an exception

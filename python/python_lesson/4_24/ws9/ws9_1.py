@@ -27,10 +27,10 @@ class linkedList():
         self._root = None
 
     def getRoot(self):
-        return self._first
+        return self._root
 
     def setRoot(self, Node):
-        self._first = Node
+        self._root = Node
 
     def isEmpty(self):
         return self._root == None
@@ -42,7 +42,7 @@ class linkedList():
 
     def insertBack(self, data):
         newNode = Node(data)
-        if self._root == None:
+        if not self._root:
             self.setRoot(newNode)
         else:
             current = self._root
@@ -59,7 +59,7 @@ class linkedList():
             current = current.getNext()
         # if check the data here, it may throw a exception as it may be a None, and None.data gives a exception 
         # equivalent to current == None
-        if current:
+        if not current:
             return False
         else:
             return True
@@ -83,7 +83,7 @@ class linkedList():
         else:
             while current.getNext() and current.getNext().getData() != data:
                 current = current.getNext()
-            if current.next.getData() == data:
+            if current.getNext().getData() == data:
                 current.setNext(current.getNext().getNext())
                 return True
             else:
