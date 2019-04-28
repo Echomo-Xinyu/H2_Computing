@@ -93,7 +93,7 @@ class DoublyLinkedList:
             if current is self._root:
                 self.setRoot(current.getNextNode())
                 # check whether the DLLL still has values to avoid an exception
-                if not self._root:
+                if self._root:
                     self._root.setPrevNode(None)
             else:
                 current.getPrevNode().setNextNode(current.getNextNode())

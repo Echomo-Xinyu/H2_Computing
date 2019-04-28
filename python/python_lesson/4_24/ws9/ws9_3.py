@@ -98,6 +98,7 @@ class DList1():
         if root.getData() == data:
             # the CDLLL has more than one element
             if root.getNextNode() is not root:
+                self._root = root.getNextNode()
                 root.getPrevNode().setNextNode(root.getNextNode())
                 root.getNextNode().setPrevNode(root.getPrevNode())
             else:
@@ -119,7 +120,9 @@ class DList1():
             return "Empty"
         result = ""
         current = self.getRoot()
-        while current is not self._root:
+        result += str(current) + "\n"
+        current = current.getNextNode()
+        while current is not self.getRoot():
             result = result + str(current) + "\n"
             current = current.getNextNode()
         return result
@@ -133,7 +136,8 @@ DL1.insertionFront(3)
 DL1.insertionBack(2)
 print(DL1.exists(2))
 print(DL1.getNode(2))
-print(DL1)
+print()
+print(str(DL1))
 print(DL1.delete(1))
 print(DL1.delete(2))
 print(DL1.getRoot())
