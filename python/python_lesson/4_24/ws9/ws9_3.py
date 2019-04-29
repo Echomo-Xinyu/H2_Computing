@@ -1,4 +1,4 @@
-# This file is to implement a node-based circular doubly-linked linked list
+# This file is to implement a node-based circular doubly-linked linked list (CDLLL)
 class DListNode:
     def __init__(self, data=None, prev=None, next=None):
         self._data = data

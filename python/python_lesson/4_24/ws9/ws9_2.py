@@ -1,4 +1,4 @@
-# this file is to implement a node-based doubly-linked list (DLLL)
+# this file is to implement a node-based doubly-linked linked list (DLLL)
 # as self._root is firstly initialized to be None, it may suggest errors in your IDE
 class DListNode:
     def __init__(self, data=None, prev=None, next=None):
@@ -66,7 +66,7 @@ class DoublyLinkedList:
         current = self._root
         while current and current.getData() != data:
             current = current.getNextNode()
-        if current:
+        if not current:
             return False
         else:
             return True
@@ -106,6 +106,7 @@ class DoublyLinkedList:
             current.setNextNode(None)
             return True
 
+    # not required, but for fun
     def reverse(self):
         current = self._root
         prev_node = None
@@ -119,7 +120,7 @@ class DoublyLinkedList:
         if prev_node is not None:
             self.setRoot(prev_node.getPrevNode())
 
-    def __repr__(self):
+    def __str__(self):
         if not self._root:
             return "Empty"
         else:

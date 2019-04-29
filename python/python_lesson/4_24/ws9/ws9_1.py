@@ -1,3 +1,4 @@
+# this file is to implement a node-based singly-linked linked list (SLLL)
 class Node():
     def __init__(self, data):
         self._data = data
@@ -78,16 +79,16 @@ class linkedList():
             return False
         current = self._root
         if current.getData() == data:
-            self.setRoot(current.next)
+            self.setRoot(current.getNext())
             return True
         else:
             while current.getNext() and current.getNext().getData() != data:
                 current = current.getNext()
-            if current.getNext().getData() == data:
+            if current.getNext():
+                return False
+            else:
                 current.setNext(current.getNext().getNext())
                 return True
-            else:
-                return False
 
     def print(self):
         if not self._root:
