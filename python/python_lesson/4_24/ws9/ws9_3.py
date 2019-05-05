@@ -30,7 +30,7 @@ class DListNode:
 class DList1():
     def __init__(self):
         self._root = None
-    # write two variants of the DList
+
     def getRoot(self):
         return self._root
     
