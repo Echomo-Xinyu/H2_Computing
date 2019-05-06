@@ -1,3 +1,4 @@
+# the file is a exercise that improves on the -1 assignment of the queue implementation in stack_queue.py
 class queue():
     def __init__(self, capacity=2):
         # range: 0 <= self.head < self.capacity, same for self.rear
