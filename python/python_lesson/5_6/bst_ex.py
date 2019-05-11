@@ -118,7 +118,7 @@ class BST():
         leftMin = self.minInSubTree(node.getLeft())
         rightMin = self.minInSubTree(node.getRight())
         # instead of not leftMin, but simply leftMin
-        if leftMin and not node.getTombstone():
+        if leftMin:
             res = min(res, leftMin)
         if rightMin:
             res = min(res, rightMin)
