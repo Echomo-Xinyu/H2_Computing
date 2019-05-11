@@ -1,4 +1,6 @@
 # this file is to implement a node-based Binary Search Tree with a tombstone in each node
+import sys
+
 class Node():
     def __init__(self, value, left=None, right=None):
         self._value = value
@@ -56,8 +58,8 @@ class BST():
                     self.maxInSubTree(current.getLeft()) == None
                     or self.maxInSubTree(current.getLeft()) < data) and (
                         self.minInSubTree(current.getRight())
-                        and self.minInSubTree(current.getRight()) >= data):
-                current.data = data
+                        or self.minInSubTree(current.getRight()) >= data):
+                current.setValue(data)
                 # current.tombstone = False
                 current.setTomestone(False)
                 break
@@ -107,30 +109,39 @@ class BST():
     def minInSubTree(self, node):
         if not node:
             return None
-        res = node.getValue()
+        if node.getTombstone():
+            # res is a very large value, 2**63
+            res = sys.maxsize
+        else:
+            res = node.getValue()
         # this part should add in extra check for the tombstone
         leftMin = self.minInSubTree(node.getLeft())
         rightMin = self.minInSubTree(node.getRight())
-        if not leftMin:
+        # instead of not leftMin, but simply leftMin
+        if leftMin and not node.getTombstone():
             res = min(res, leftMin)
-        if not rightMin:
+        if rightMin:
             res = min(res, rightMin)
         return res
 
     def maxInSubTree(self, node):
         if not node:
             return None
-        res = node.getValue()
-        print(node)
-        print(res)
+        if node.getTombstone():
+            # res is assigned a very small value
+            res = -sys.maxsize-1
+        else:
+            res = node.getValue()
+        # print(node)
+        # print(res)
         # this part should add in extra check for the tombstone
         leftMax = self.maxInSubTree(node.getLeft())
         rightMax = self.maxInSubTree(node.getRight())
-        print(leftMax)
-        if not leftMax:
+        # print(leftMax)
+        if leftMax:
             res = max(res, leftMax)
-        print(rightMax)
-        if not rightMax:
+        # print(rightMax)
+        if rightMax:
             res = max(res, rightMax)
         return res
 
@@ -153,19 +164,73 @@ class BST():
                 stack.append(current.getRight())
             # print(stack)
 
+# a = BST()
+# a.insert(5)
+# a.insert(2)
+# a.insert(7)
+# a.print()
+# a.insert(5.1)
+# a.insert(8)
+# if a.exists(2):
+#     a.print()
+#     a.delete(5)
+#     a.print()
+# if a.exists(10):
+#     print("hey dude you got problem")
+# a.insert(5.5)
+# a.print()
 
-a = BST()
-a.insert(5)
-a.insert(2)
-a.insert(7)
-a.print()
-a.insert(5.1)
-a.insert(8)
-if a.exists(2):
-    a.print()
-    a.delete(5)
-    a.print()
-if a.exists(10):
-    print("hey")
-a.insert(5.5)
-a.print()
+# b = BST()
+# b.insert(5)
+# b.insert(2)
+# b.insert(4.9)
+# b.insert(7)
+# if b.exists(5):
+#     b.delete(5)
+#     b.print()
+# b.insert(4.8)
+# b.print()
+
+# c = BST()
+# c.insert(1)
+# c.insert(5)
+# c.insert(2)
+# c.insert(7)
+# c.print()
+# c.insert(5.1)
+# c.insert(8)
+# if c.exists(2):
+#     c.print()
+#     c.delete(5)
+#     c.print()
+# if c.exists(10):
+#     print("hey dude you got problem")
+# c.insert(5.5)
+# c.print()
+
+# d = BST()
+# d.insert(1)
+# d.insert(5)
+# d.insert(2)
+# d.insert(4.9)
+# d.insert(7)
+# if d.exists(5):
+#     d.delete(5)
+#     d.print()
+# d.insert(4.8)
+# d.print()
+
+# e = BST()
+# e.insert(1)
+# e.insert(5)
+# e.insert(2)
+# e.insert(4.9)
+# e.insert(7)
+# if e.exists(5):
+#     e.delete(5)
+#     e.print()
+# if e.exists(4.9):
+#     e.delete(4.9)
+#     e.print()
+# e.insert(4.8)
+# e.print()
