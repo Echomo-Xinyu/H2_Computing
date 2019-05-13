@@ -110,7 +110,8 @@ class BST():
         if not node:
             return None
         if node.getTombstone():
-            # res is a very large value, 2**63
+            # res is a very large value, 2**63, idealy largest signed integer value
+            # without being converted to a string 
             res = sys.maxsize
         else:
             res = node.getValue()
@@ -128,7 +129,7 @@ class BST():
         if not node:
             return None
         if node.getTombstone():
-            # res is assigned a very small value
+            # res is assigned the ideal smallest value
             res = -sys.maxsize-1
         else:
             res = node.getValue()
