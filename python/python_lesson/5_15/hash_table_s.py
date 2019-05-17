@@ -17,22 +17,6 @@ class HashTable():
                     # print error message
                     return
     
-    def isEmpty(self):
-        target = 0
-        while self.array[target]==None:
-            if target==self.size-1:
-                return True
-            target+=1
-        return False
-    
-    def isFull(self):
-        target = 0
-        while self.array[target]!=None:
-            if target==self.size-1:
-                return True
-            target+=1
-        return False
-    
     # to make the code modular
     def getIndex(self, data):
         target = hash(data) % self.size

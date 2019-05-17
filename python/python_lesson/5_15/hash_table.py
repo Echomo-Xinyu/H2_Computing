@@ -24,6 +24,7 @@ class HashTable():
     def delete(self, key):
         target = self.hash(key)
         end = target
+        # first part needed to avoid second part giving an exception for None value
         while self.array[target] != None and self.array[target][0] != key:
             target = (target + 1) % self.size
             if target == end:
@@ -47,8 +48,8 @@ class HashTable():
                 # print("Not exists")
                 return False
 
-    # three locations, 1st location insert a, b and 2nd location insert c,
-    # offset to 3rd location
+    # three locations, 1st location insert a, b and 2nd location insert c, which is
+    # then offset to 3rd location
     # delete the b at the 2nd location and then search the c, case
     # do a linear search to address the limitation of imperfect hash function
     def search(self, key):
