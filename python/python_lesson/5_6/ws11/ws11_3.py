@@ -1,4 +1,3 @@
-# this file is an incomplete version for the answer. Many parts to be completed and tested.
 # update on 22 May: complete implementing the thing and pass the test case
 class Node():
     def __init__(self, data=None, left=-1, right=-1):
