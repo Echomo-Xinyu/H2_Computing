@@ -25,8 +25,8 @@ class Node():
 
     def _str_(self):
         return "{0:<10}{1:<10}{2:<10}".format(
-            str(self._left.getValue()) if self._left else "None",
             str(self._value),
+            str(self._left.getValue()) if self._left else "None",
             str(self._right.getValue()) if self._right else "None")
 
 
@@ -117,8 +117,7 @@ class BST():
             print("Empty")
             return
         stack = [self._root]
-        print("{0:<10}{1:<10}{2:<10}".format("Node.left", "Node.data",
-                                             "Node.right"))
+        print("{0:<10}{1:<10}{2:<10}".format("DATA", "LEFT", "RIGHT"))
         while len(stack) > 0:
             current = stack.pop()
             print(current)
@@ -154,3 +153,18 @@ class BST():
             res += self.post_order_traversal(current.getRight())
             res.append(current)
         return res
+    
+    # an unspecified delete function
+    def delete(self, data):
+        if self.isEmpty():
+            return False
+        current = self._root
+        while current:
+            if data == current.getValue():
+                current.setValue(None)
+                return True
+            elif data < current.getValue():
+                current = current.getLeft()
+            else:  # data > current.getValue():
+                current = current.getRight()
+        return False
