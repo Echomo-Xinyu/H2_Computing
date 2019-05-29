@@ -4,7 +4,7 @@ an article that clarifies the problem
 '''
 
 
-# EXAMPLE 1: mutable object, call by object, primitive data type: string, int, boolean
+# EXAMPLE 1: immutable object, call by object, primitive data type: string, int, boolean
 def f1(my_number):
     my_number+=1
     print("my_number is: " + str(my_number))
@@ -16,7 +16,7 @@ print("my_number is: " + str(my_number))
 # ... 11
 # ... 10
 
-# EXAMPLE 2: immutable object, call by object reference
+# EXAMPLE 2: mutable object, call by object reference, such as list, dictionary, non-primitive object
 def f2(my_list):
     my_list.append(10000)
     print("my_list is: " + str(my_list))
@@ -30,7 +30,7 @@ print("my_list is: " + str(my_list))
 
 # similar case for EXAMPLE 2:
 L1 = [1, 2, 3]
-L2 = L1 # pass by reference
+L2 = L1 # pass by object reference
 L2[1] = 100
 print(L1[1])
 # output: 100
