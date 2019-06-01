@@ -11,4 +11,4 @@ def hanoi(n, a, b, c):
         print(a, n, c)
         hanoi(n-1, b, a, c)
 
-hanoi(3, a, b, c)
+hanoi(10, a, b, c)
