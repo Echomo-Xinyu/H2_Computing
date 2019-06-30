@@ -54,11 +54,13 @@ class queue():
         if self.isFull():
             return False
         self.array[self.tail] = data
-        if self.tail + 1 == self.size:
-            # move to front if at the end of the array container
-            self.tail = 0
-        else:
-            self.tail += 1
+        self.tail = (self.tail + 1) % self.size
+        # equivalent to following block
+        # if self.tail + 1 == self.size:
+        #     # move to front if at the end of the array container
+        #     self.tail = 0
+        # else:
+        #     self.tail += 1
         # if add in first element, initialize self.head
         if self.head < 0:
             self.head = 0
