@@ -31,7 +31,7 @@ def k2d(s, k):
 for index in range(i-1):
     # index_l, index_r = 5*index+2, 5*index+7
     # print(first_line[index_l:index_r])
-    base[index] = k2d(first_line[5*index+6], gb)
+    base[index] = k2d(first_line[5*index+2:5*index+7], gb)
 
 # for i in range(len(base)):
 #     print(base[i])
@@ -80,6 +80,7 @@ def process_string(string, desired_length):
     if desired_length>n:
         for i in range(desired_length-n):
             additional_string += "0"
+            
     # print(additional_string+string)
     return additional_string+string
 
@@ -104,4 +105,3 @@ for i in range(len(base)):
         handle.write(processed_substring)
     handle.write("\n")
     # print(current_line_content)
-
