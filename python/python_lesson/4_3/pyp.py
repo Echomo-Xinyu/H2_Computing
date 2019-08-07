@@ -26,10 +26,11 @@ def rotate(arr, n=1):
         for j in range(0, half_length):
             for k in range(0, half_length):
                 arr[j][k], arr[j][length - k - 1], arr[length - j - 1][
-                    length - k - 1], arr[length - j - 1][k] = arr[
-                        length - j - 1][k], arr[j][k], arr[j][
-                            length - k - 1], arr[length - j - 1][length - k -
-                                                                 1]
+                    length - k -
+                    1], arr[length - j -
+                            1][k] = arr[length - j - 1][k], arr[j][k], arr[j][
+                                length - k - 1], arr[length - j - 1][length -
+                                                                     k - 1]
         if length % 2 == 1:
             for j in range(half_length):
                 arr[half_length][j], arr[j][half_length], arr[half_length][
