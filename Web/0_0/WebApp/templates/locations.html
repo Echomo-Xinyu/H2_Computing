@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>NJC</title>
+    <link rel="stylesheet" href="/static/locations.css" />
+</head>
+
+<body>
+    <div class="menu">
+        <ul>
+            <li>Home</li>
+            <li>View Catalogue</li>
+            <li><a href="/add_location">Add Location</a></li>
+            <li>Help</li>
+        </ul>
+    </div>
+    <h1>Locations</h1>
+    <div class="location-list">
+        {% for line in locations %}
+        <div class="location">
+            <div class="location-image">
+                <image src="/static/images/{{ line['Image'] }}" />
+            </div>
+            <div class="location-text">
+                <div class="location-name">
+                    <a href="{{ url_for('edit_location', location=line['Name']) }}">{{ line["Name"] }}</a>
+                </div>
+                <div class="location-description">{{ line["Description"] }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
