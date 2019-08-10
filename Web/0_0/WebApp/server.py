@@ -48,10 +48,13 @@ def add_location():
     if "image" in request.files:
         image_file = request.files["image"]
         image_file_name = image_file.filename
-        try:
-            image_file.save("static/images/" + image_file_name)
-        except Exception as e:
-            print(str(e))
+        pathway = "static/images/" + image_file_name
+        # try:
+        #     image_file.save(pathway)
+        # except Exception as e:
+        #     print(str(e))
+        if image_file_name != "":
+            image_file.save("?",(pathway,))
     try:
         con = open_DB("catalogue.db")
         con.execute(
@@ -72,11 +75,14 @@ def update_location(location):
     if "image" in request.files:
         image_file = request.files["image"]
         image_file_name = image_file.filename
-        try:
-            if image_file != "":
-                image_file.save("/static/images/" + image_file_name)
-        except:
-            print("Hmm the bug is yet to handle")
+        pathway = "static/images/" + image_file_name
+        # try:
+        #     if image_file != "":
+        #         image_file.save(pathway)
+        # except:
+        #     print("Hmm the bug is yet to handle")
+        if image_file_name != "":
+            image_file.save(pathway)
     try:
         con = open_DB("catalogue.db")
         cur = con.cursor()
