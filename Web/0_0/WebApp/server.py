@@ -14,15 +14,26 @@ def open_DB(db):
 app = Flask("__name__")
 
 
+# suppose offer option as  traveller or admin
 @app.route("/")
 def root():
+    return render_template("main.html")
+
+@app.route("/login_process")
+def login_process():
+    if request.form["submit"] == "admin":
+        return render_template("admin_login.html")
+    else:
+        return render_template("traveller.html")
+
+@app.route("/admin")
+def login():
     con = open_DB("catalogue.db")
     cur = con.execute("SELECT * FROM Locations")
     rows = cur.fetchall()
     # print(rows)
     con.close()
     return render_template("locations.html", locations=rows)
-
 
 @app.route("/edit/<location>", methods=['GET'])
 def edit_location(location):
