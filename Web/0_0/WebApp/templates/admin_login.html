@@ -3,11 +3,22 @@
 
 <head>
     <title>Login in as Admin</title>
+    <style>
+
+    </style>
 </head>
 
 <body>
-    <form action="/login_admin" method="POST" enctype="multipart/form-data">
 
+    <form action="/login_admin" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="name">Username</label>
+            <input type="text" id="name" name="name" required="required">
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password" required="required">
+        </div>
     </form>
 </body>
 

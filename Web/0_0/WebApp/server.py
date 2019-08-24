@@ -19,12 +19,26 @@ app = Flask("__name__")
 def root():
     return render_template("main.html")
 
-@app.route("/login_process")
-def login_process():
+@app.route("/login_option")
+def login_option():
     if request.form["submit"] == "admin":
         return render_template("admin_login.html")
     else:
         return render_template("traveller.html")
+
+@app.route("/login_admin")
+def login_admin():
+    input_name, input_password = request.form["name"], request.form["password"]
+    con = open_DB("catalogue.db")
+    try:
+        cur = con.execute("SELECT * FROM Users WHERE user_name = (?)", input_name)
+        row = cur.fetchone()
+        if hash(input_password) == row["password_hashed"]:
+            return render_template("locations_admin.html")
+        else:
+            return render_template("main.html")
+    except:
+        return render_template("main.html")
 
 @app.route("/admin")
 def login():
@@ -33,7 +47,7 @@ def login():
     rows = cur.fetchall()
     # print(rows)
     con.close()
-    return render_template("locations.html", locations=rows)
+    return render_template("locations_admin.html", locations=rows)
 
 @app.route("/edit/<location>", methods=['GET'])
 def edit_location(location):
@@ -114,6 +128,27 @@ def update_location(location):
         print("***" + str(e))
     con.close()
     return redirect("/")
+
+@app.route("/traveller_overview_info")
+def traveller_overview_info():
+    con = open_DB("locations.db")
+    cur = con.execute("SELECT * FROM Locations")
+    rows = cur.fetchall()
+    con.close()
+    return render_template("traveller_main.html", locations=rows)
+
+@app.route("/traveller", methods=['GET'])
+def traveller_location(location):
+    try:
+        con = open_DB("locations.db")
+        cur = con.cursor()
+        cur.execute("SELECT * FROM locations WHERE name=?", (location,))
+        row = cur.fetchone()
+    except Exception as e:
+        print(str(e))
+    con.close()
+    return render_template("traveller_location.html", location=row)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
