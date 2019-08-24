@@ -17,7 +17,7 @@ def root():
     authen = False
     return render_template("main.html")
 
-@app.route("/login_option")
+@app.route("/login_option", methods=["POST"])
 def login_option():
     if request.form["submit"] == "admin":
         return render_template("login.html")
@@ -206,3 +206,4 @@ def deleteLink(l1, l2):
         return False
 
 
+app.run(debug=True)
