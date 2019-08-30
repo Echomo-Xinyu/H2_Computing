@@ -24,6 +24,12 @@ def login_option():
     else:
         return render_template("menu.html")
 
+def _hash(string):
+    result = ""
+    for i in range(len(string)):
+        result += str((i + 1) * ord(string[i]))
+    return result
+
 @app.route("/login")
 def login():
     input_name, input_password = request.form["name"], request.form["password"]
@@ -31,7 +37,7 @@ def login():
     try:
         cur = con.execute("SELECT * FROM Users WHERE Name=?", input_name)
         row = cur.fetchone()
-        if hash(input_password) == row["PasswordHashed"]:
+        if _hash(input_password) == row["PasswordHashed"]:
             return redirect("/admin")
         else:
             return redirect("/login")
