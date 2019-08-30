@@ -17,7 +17,7 @@ def root():
     authen = False
     return render_template("main.html")
 
-@app.route("/login_option", methods=["POST"])
+@app.route("/login_option", methods=["GET", "POST"])
 def login_option():
     if request.form["submit"] == "admin":
         return render_template("login.html")
@@ -30,19 +30,22 @@ def _hash(string):
         result += str((i + 1) * ord(string[i]))
     return result
 
-@app.route("/login")
+@app.route("/login", methods=["POST"])
 def login():
-    input_name, input_password = request.form["name"], request.form["password"]
+    input_name, input_password = request.form["username"], request.form["password"]
     con = open_db("locations.db")
     try:
         cur = con.execute("SELECT * FROM Users WHERE Name=?", input_name)
         row = cur.fetchone()
+        print("1")
         if _hash(input_password) == row["PasswordHashed"]:
             return redirect("/admin")
         else:
-            return redirect("/login")
+            # return redirect("/login_option")
+            return render_template("main.html")
     except:
-        return redirect("/login")
+        # return redirect("/login_option")
+        return render_template("main.html")
 
 @app.route("/admin")
 def admin():
@@ -126,7 +129,7 @@ def visitor():
     rows = cursor.fetchall()
     con.close()
     rows.sort(key = lambda x:x[0])
-    return render_template("manu.html", rows = rows)
+    return render_template("menu.html", rows = rows)
 
 @app.route("/item/<location>")
 def displayItem(location):
@@ -211,5 +214,5 @@ def deleteLink(l1, l2):
         con.close()
         return False
 
-
+print(_hash("Password1"))
 app.run(debug=True)
