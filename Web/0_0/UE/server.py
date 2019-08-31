@@ -35,6 +35,7 @@ def login():
     input_name, input_password = request.form["username"], request.form["password"]
     con = open_db("locations.db")
     try:
+        print("0")
         cur = con.execute("SELECT * FROM Users WHERE Name=?", input_name)
         row = cur.fetchone()
         print("1")

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Web App Project</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .w3-card-4 {
+            width: 20%;
+        }
+        .manycards{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        body {
+            background-color: #DFC3AA;
+        }
+
+    </style>
+    </head>
+    <body>
+        <div class="w3-sidebar w3-bar-block w3-khaki" style="width:10%;"> 
+          <h3 class="w3-bar-item w3-deep-orange">Floors</h3>
+          <a href="/" class="w3-bar-item w3-button">All</a>
+          {%for i in floors%}
+            <a href="/floor/{{i}}" class="w3-bar-item w3-button">{{i}}</a>
+          {%endfor%}
+        </div>
+        <div style="margin-left:10%">
+
+            <div class="row">
+                <div class="w3-bar w3-deep-orange">
+                    <a href="#" class="w3-bar-item w3-button w3-red">Home</a>
+                    <a href="/loginpage" class="w3-bar-item w3-button">Login</a>
+                    <form action="/search"  method="post">
+                    <input type="text" class="w3-bar-item w3-input" placeholder="Search.." name = "query">
+                    <div class="button w3-bar-item w3-button w3-red">
+                        <button type="submit">Search</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="manycards">
+                {%for i in res%}
+                <div class="w3-card-4" style="min-width: 200px;">
+                    
+                    <header class="w3-container w3-light-grey w3-center">
+                      <img src="/static/images/{{i[2]}}"  style="height:8em; width:auto; max-width: 100%;">
+                    </header>
+
+                <a href="/item/{{i[0]}}">
+                    <button class="w3-button w3-block w3-brown">{{i[0]}}</button>
+                </a>
+
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+
+    </body>
+</html>

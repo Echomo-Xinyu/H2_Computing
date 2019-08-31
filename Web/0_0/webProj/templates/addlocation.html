@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<style>
+		.body{
+			background-color: #DFC3AA;
+		}
+	</style>
+</head>
+<body>
+	<div class="w3-sidebar w3-bar-block w3-khaki" style="width:110px"> 
+        <h3 class="w3-bar-item w3-deep-orange">Floors</h3>
+          <a href="/admin" class="w3-bar-item w3-button">All</a>
+          {%for i in floors%}
+            <a href="/floor/{{i}}" class="w3-bar-item w3-button">{{i}}</a>
+          {%endfor%}
+        </div>
+        <div style="margin-left:110px">
+
+            <div class="row">
+                <div class="w3-bar w3-deep-orange">
+                    <a href="/admin" class="w3-bar-item w3-button">Home</a>
+                    <a href="/" class="w3-bar-item w3-button">Logout</a>
+                    <a href="/addLocation" class="w3-bar-item w3-button w3-red">Add Location</a>
+                    <a href="/addLink" class="w3-bar-item w3-button">Add Link</a>
+                    <form action="/search"  method="post">
+                    <input type="text" class="w3-bar-item w3-input" placeholder="Search.." name = "query">
+                    <div class="button w3-bar-item w3-button w3-red">
+                        <button type="submit">Search</button>
+                    </div>
+                </div>
+                    </form>
+                    <div class="w3-card-4 w3-dark-grey w3-display-middle" style="width:50%">
+                    	<header class="w3-container w3-teal">
+	  						<h2>Add Location</h2>
+						</header>
+
+	                    <form action="/add" method="POST" class="w3-container" enctype = "multipart/form-data">
+							<label for="name">Name</label>
+							<input class="w3-input w3-border w3-light-grey" type="text" name="name">
+							<label for="desc">Desc</label>
+							<input class="w3-input w3-border w3-light-grey" type="text" name="desc">
+                            <div>
+                                <label for="image">Location image:</label>
+                                <input type="file" name="image">
+                            </div>
+                            <label for="floor">floor</label>
+                            <input class="w3-input w3-border w3-light-grey" type="text" name="floor">
+							<br>
+							<button type="submit" class="w3-button w3-blue-grey">Add</button>
+						</form>
+					</div>
+                
+        </div>
+
+    </body>
+	
+</body>
+</html>
