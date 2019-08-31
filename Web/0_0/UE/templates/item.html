@@ -68,22 +68,22 @@
 </head>
 
 <body>
-    <div class="w3-sidebar w3-bar-block w3-khaki" id="sidebar">
-        <h3 class="w3-bar-item w3-deep-orange">Floors</h3>
-        <a href="/admin" class="w3-bar-item w3-button">All</a> {%for i in floors%}
-        <a href="/floor/{{i}}" class="w3-bar-item w3-button">{{i}}</a> {%endfor%}
+    <div class="w3-sidebar w3-bar-block w3-blue" id="sidebar">
+        <h3 class="w3-bar-item">Floors</h3>
+        <a href="/admin" class="w3-bar-item w3-button" style="background-color:slateblue;">All</a> {%for i in floors%}
+        <a href="/floor/{{i}}" class="w3-bar-item w3-button" style="background-color:slateblue;">{{i}}</a> {%endfor%}
     </div>
     <div id="margin_left_thing">
-        <div class="row">
-            <div class="w3-bar w3-deep-orange">
-                <a href="/admin" class="w3-bar-item w3-button w3-red">Home</a> {%if not auth%}
-                <a href="/loginpage" class="w3-bar-item w3-button">Login</a> {%endif%} {%if auth%}
-                <a href="/" class="w3-bar-item w3-button">Logout</a>
-                <a href="/addLocation" class="w3-bar-item w3-button">Add Location</a>
-                <a href="/addLink" class="w3-bar-item w3-button">Add Link</a> {%endif%}
+        <div class="row w3-blue">
+            <div class="w3-bar w3-blue">
+                <a href="/admin" class="w3-bar-item w3-button" style="background-color:slateblue;">Home</a> {%if not auth%}
+                <a href="/loginpage" class="w3-bar-item w3-button" style="background-color:slateblue;">Login</a> {%endif%} {%if auth%}
+                <a href="/" class="w3-bar-item w3-button" style="background-color:slateblue;">Logout</a>
+                <a href="/addLocation" class="w3-bar-item w3-button" style="background-color:slateblue;">Add Location</a>
+                <a href="/addLink" class="w3-bar-item w3-button" style="background-color:slateblue;">Add Link</a> {%endif%}
                 <form action="/search" method="post">
                     <input type="text" class="w3-bar-item w3-input" placeholder="Search.." name="query">
-                    <div class="button w3-bar-item w3-button w3-red">
+                    <div class="button w3-bar-item w3-button" style="background-color:slateblue;">
                         <button type="submit">Search</button>
                     </div>
                 </form>
@@ -115,17 +115,24 @@
                         </header>
 
                         <a href="/item/{{j[0]}}">
-                            <button class="w3-button w3-block w3-dark-grey">{{j[0]}}</button>
+                            <button class="w3-button w3-block" style="background-color:slateblue;">{{j[0]}}</button>
                         </a>
                         {%if auth%}
                         <a href="/linkDelete/{{i[0][0]}}/{{j[0]}}">
-                            <button class="w3-button w3-block w3-deep-orange">delete</button>
+                            <button class="w3-button w3-block w3-blue">delete</button>
                         </a>
                         {%endif%}
+
                     </div>
                     {%endfor%}
                 </div>
             </div>
+
+
         </div>
+
+
+
     </div>
+
 </body>

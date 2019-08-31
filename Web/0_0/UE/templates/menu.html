@@ -21,20 +21,20 @@
 </head>
 
 <body>
-    <div class="w3-sidebar w3-bar-block w3-khaki" style="width:10%;">
-        <h3 class="w3-bar-item w3-deep-orange">Floors</h3>
-        <a href="/" class="w3-bar-item w3-button">All</a> {%for i in floors%}
-        <a href="/floor/{{i}}" class="w3-bar-item w3-button">{{i}}</a> {%endfor%}
+    <div class="w3-sidebar w3-bar-block w3-blue" style="width:10%;">
+        <h3 class="w3-bar-item">Floors</h3>
+        <a href="/" class="w3-bar-item w3-button" style="background-color:slateblue;">All</a> {%for i in floors%}
+        <a href="/floor/{{i}}" class="w3-bar-item w3-button" style="background-color:slateblue;">{{i}}</a> {%endfor%}
     </div>
     <div style="margin-left:10%">
 
         <div class="row">
-            <div class="w3-bar w3-deep-orange">
-                <a href="#" class="w3-bar-item w3-button w3-red">Home</a>
-                <a href="/loginpage" class="w3-bar-item w3-button">Login</a>
+            <div class="w3-bar w3-blue">
+                <a href="#" class="w3-bar-item w3-button" style="background-color:slateblue;">Home</a>
+                <a href="/loginpage" class="w3-bar-item w3-button" style="background-color:slateblue;">Login</a>
                 <form action="/search" method="post">
                     <input type="text" class="w3-bar-item w3-input" placeholder="Search.." name="query">
-                    <div class="button w3-bar-item w3-button w3-red">
+                    <div class="button w3-bar-item w3-button" style="background-color:slateblue;">
                         <button type="submit">Search</button>
                     </div>
                 </form>
@@ -49,7 +49,7 @@
                 </header>
 
                 <a href="/item/{{i[0]}}">
-                    <button class="w3-button w3-block w3-brown">{{i[0]}}</button>
+                    <button class="w3-button w3-block" style="background-color:slateblue;">{{i[0]}}</button>
                 </a>
 
             </div>
