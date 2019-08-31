@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .body {
+            background-color: #DFC3AA;
+        }
+        
+        select {
+            padding: 10px;
+            border: 0;
+            font-size: 20px;
+            width: 100px;
+            border-radius: 0;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w3-sidebar w3-bar-block w3-khaki" style="width:110px">
+        <h3 class="w3-bar-item w3-blue">Floors</h3>
+        <a href="/admin" class="w3-bar-item w3-button">All</a> {%for i in floors%}
+        <a href="/floor/{{i}}" class="w3-bar-item w3-button">{{i}}</a> {%endfor%}
+    </div>
+    <div style="margin-left:110px">
+
+        <div class="row">
+            <div class="w3-bar w3-blue">
+                <a href="/admin" class="w3-bar-item w3-button">Home</a>
+                <a href="/" class="w3-bar-item w3-button">Logout</a>
+                <a href="/addLocation" class="w3-bar-item w3-button">Add Location</a>
+                <a href="/addLink" class="w3-bar-item w3-button w3-blue">Add Link</a>
+                <form action="/search" method="post">
+                    <input type="text" class="w3-bar-item w3-input" placeholder="Search.." name="query">
+                    <div class="button w3-bar-item w3-button w3-blue">
+                        <button type="submit">Search</button>
+                    </div>
+            </div>
+            </form>
+            <div class="w3-card-4 w3-dark-grey w3-display-middle" style="width:50%; min-width:350px;">
+                <header class="w3-container w3-teal">
+                    <h2>Add Link</h2>
+                </header>
+
+                <form action="/link" method="POST" class="w3-container" enctype="multipart/form-data">
+                    <br>
+                    <label for="location1">Place to Link 1:  </label>
+                    <select name="location1" style="margin-right: 10px">
+                                {%for i in locationNames%}
+                                <option value={{i}}>{{i}}</option>
+                                {%endfor%}
+                            </select>
+                    <br>
+                    <label for="location2">Place to Link 2:  </label>
+                    <select name="location2">
+                                {%for i in locationNames%}
+                                <option value={{i}}>{{i}}</option>
+                                {%endfor%}
+                            </select>
+
+                    <br><br> {% if userScrewedUp%}
+                    <p class="w3-blue"> There was an error. You probably did not specify the location name exactly as you see it on the website. </p>
+                    {% endif %}
+                    <button type="submit" class="w3-button w3-blue-grey">Add</button>
+                </form>
+            </div>
+
+        </div>
+
+</body>
+
+</body>
+
+</html>
