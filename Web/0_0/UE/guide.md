@@ -12,7 +12,7 @@
     - `Login`: the button will head to the login page, allowing the user to login in as an admin. Specific details are explained above.
     - `Search`: the search bar allows the user to find location(s) with certain keywords. For example, the keyword `cs` will lead to the result of `cs21, cs22, cs23`, three locations with keyword `cs` inside. After typing in the keyword in the bar, click the `search` button to perform the operation.
   - side bar:
-    - `All` is a button that removes the current **filter**
+    - `All` is a button that removes the current **filter** and return the `home` page
     - The other bars `1.0` `2.0` `3.0` will namely change the filter of the items, so that it will only display the locations at the certain level.
   - The `manycards` section will display an overview of the locations:
     - In each card, it includes two parts: the `image` of the location and the `name` of the location. The `name` button will direct to the specific page `item`
@@ -23,6 +23,7 @@
 - The admin account: Username: `Admin` Password: `20190831`
   - If login successfully will lead to the admin home page, allowing update, delete operations
   - Fail to login will trigger displaying of an error message and will still remain at the login page `/loginpage`
+  - An easter egg may be triggered with the date of last day of term 3 :)
 
 ## Visitor mode (without logging in)
 

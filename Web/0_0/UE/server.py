@@ -176,12 +176,20 @@ def redirAdmin():
 
 @app.route("/login", methods=["POST"])
 def login():
+    print(request.form["date"])
+    if request.form["username"] == "Admin" and request.form["date"] == "2019-09-05":
+        print("hi")
+        return redirect("/toMrLeong")
     if (request.form["username"] == "Admin" and request.form["password"] == "20190831") or (request.form["username"] == "./njc" and request.form["password"] == "Password1"):
         global auth
         auth = True
         return redirect("/admin")
     else:
         return redirect("/loginpage")
+
+@app.route("/toMrLeong")
+def teachersDay():
+    return render_template("teachersDay.html")
 
 
 @app.route("/loginpage")
