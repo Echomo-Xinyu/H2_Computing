@@ -167,7 +167,6 @@ def search():
 def redirAdmin():
     if auth:
         res = reader()
-        floors = floor()
         res.sort(key=lambda x: x[0])
         return render_template("adminMenu.html", floors=floor(), res=res)
     else:
@@ -233,7 +232,7 @@ def editItem(itemName):
                     (data["name"], data["desc"], data["floor"], itemName))
         con.commit()
     except Exception as err:
-        # return str(err)
+        print(str(err))
         pass
     con.close()
     return redirect("/admin")

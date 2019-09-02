@@ -39,4 +39,4 @@
 - At `/addLink`: the two locations selected have to be present inside the current available locations to add in the linkage. Otherwise, it will display an error message and remain at the page `/addLink`
 - At `/admin`: similar to the `/` but with additional features:
   - There is one more `X` at the right up corner of each location. Once clicked, the location will be deleted and all linkings to the location will be deleted.
-  - At each view, besides the `image` and `name`, there is additional `edit` function. When clicked, it will pop up the `/edit/<location>` page for the user to update information about the location. 
+  - At each view, besides the `image` and `name`, there is additional `edit` function. When clicked, it will pop up the `/edit/<location>` page for the user to update information about the location.
