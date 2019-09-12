@@ -5,7 +5,7 @@ class queue():
         # self.size is used to monitor the size of the queue
         self.head, self.size = 0, 0
         # such that frist time it will add to 0th index of array
-        self.rear = capacity - 1
+        self.rear = self.head - 1
         self.capacity = capacity
         self.array = [None for i in range(capacity)]
     
