@@ -109,3 +109,53 @@ b.push(56)
 b.print()
 print(b.pop())
 b.print()
+
+# this version of queue is the official version of implementation
+class queue_ex():
+    def __init__(self, capacity=10):
+        self.head, self.size = 0, 0
+        self.rear = self.head - 1
+        self.capacity = capacity
+        self.array = [None for i in range(capacity)]
+    
+    def isEmpty(self):
+        return self.size <= 0
+
+    def isFull(self):
+        return self.size == self.capacity
+    
+    def enqueue(self, data):
+        if self.isFull():
+            print("Queue is full")
+            return False
+        self.rear = (self.rear + 1) % self.capacity
+        self.array[self.rear] = data
+        self.size += 1
+        return True
+    
+    def dequeue(self, data):
+        if self.isEmpty():
+            print("Queue is empty")
+            return False
+        toDequeue = self.array[self.head]
+        self.array[self.head] = None
+        self.head = (self.head + 1) % self.capacity
+        self.size -= 1
+        return toDequeue
+    
+    def front(self):
+        return self.array[self.head]
+    
+    def end(self):
+        return self.array[self.rear]
+    
+    def print(self):
+        if self.isEmpty():
+            print("Empty")
+            return
+        result = str(self.array[self.head])
+        index = self.head + 1
+        for index in range(1, self.size):
+            index = (index + self.head) % self.capacity
+            result += " -> " + str(self.array[index])
+        print(result)
