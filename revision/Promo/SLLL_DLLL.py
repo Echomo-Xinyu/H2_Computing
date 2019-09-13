@@ -33,7 +33,7 @@ class SLLL():
             self.root = self.root.next
             return True
         currentNode = self.root
-        while currentNode.next != None and currentNode.next.data != data and current.next.next!=None:
+        while currentNode.next != None and currentNode.next.data != data and currentNode.next.next!=None:
             currentNode = currentNode.next
         if currentNode.next != None:
             currentNode.next = currentNode.next.next
