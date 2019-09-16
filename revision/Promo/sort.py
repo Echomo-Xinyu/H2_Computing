@@ -3,30 +3,34 @@
 def bubbleSort(L):
     length = len(L)
     for i in range(length):
-        for j in range(length-i-1):
-            if L[j] > L[j+1]:
-                L[j], L[j+1] = L[j+1], L[j]
+        for j in range(length - i - 1):
+            if L[j] > L[j + 1]:
+                L[j], L[j + 1] = L[j + 1], L[j]
     return L
+
 
 def bubbleSortQ(L):
     length = len(L)
     for i in range(length):
         whether_exchanged = False
-        for j in range(length-i-1):
-            if L[j] > L[j+1]:
-                L[j], L[j+1] = L[j+1], L[j]
+        for j in range(length - i - 1):
+            if L[j] > L[j + 1]:
+                L[j], L[j + 1] = L[j + 1], L[j]
                 whether_exchanged = True
         if whether_exchanged == False:
             break
     return L
 
+
 def insertionSort(L):
     length = len(L)
     for i in range(length):
         for j in range(i, 0, -1):
-            if L[j] < L[j-1]:
-                L[j], L[j-1] = L[j-1], L[j]
+            # here seem to be able to improve by ending when encountering anomalous case
+            if L[j] < L[j - 1]:
+                L[j], L[j - 1] = L[j - 1], L[j]
     return L
+
 
 def quickSort(L):
     length = len(L)
@@ -41,8 +45,13 @@ def quickSort(L):
             more.append(L[i])
     return quickSort(less) + [pivot] + quickSort(more)
 
+
 def qs(L):
-    return (qs([L[i] for i in range(1, len(L)) if L[i] < L[0]]) + [L[0]] + qs([L[j] for j in range(1, len(L)) if L[j] >= L[0]])) if len(L) >= 2 else L
+    return (
+        qs([L[i] for i in range(1, len(L)) if L[i] < L[0]]) + [L[0]] +
+        qs([L[j]
+            for j in range(1, len(L)) if L[j] >= L[0]])) if len(L) >= 2 else L
+
 
 def mergeSort(L):
     length = len(L)
@@ -72,7 +81,7 @@ def mergeSort(L):
             k += 1
             j += 1
     return L
-            
+
 
 A = [1, 3, 4, 2, 5]
 # A = bubbleSort(A)
@@ -83,15 +92,3 @@ A = [1, 3, 4, 2, 5]
 A = mergeSort(A)
 for i in range(len(A)):
     print(A[i])
-
-
-
-
-
-
-
-
-
-
-
-
