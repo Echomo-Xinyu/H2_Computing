@@ -121,7 +121,8 @@ d.print()
 
 class DLLL(SLLL):
     def __init__(self):
-        self.root = None
+        # self.root = None
+        super.__init__(self)
     def insertFront(self, data):
         newNode = Node(data)
         if self.root == None:
