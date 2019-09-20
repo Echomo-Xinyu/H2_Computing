@@ -57,11 +57,11 @@ def mergeSort(L):
     length = len(L)
     if length > 1:
         mid = length // 2
-        left = L[:mid]
-        right = L[mid:]
+        left = L[:mid].copy()
+        right = L[mid:].copy()
         # make sure both halves' element are sorted
-        mergeSort(left)
-        mergeSort(right)
+        left = mergeSort(left)
+        right = mergeSort(right)
         i = j = k = 0
         while i < len(left) and j < len(right):
             if left[i] < right[j]:
