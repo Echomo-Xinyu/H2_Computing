@@ -1,4 +1,5 @@
 # the file is to write two ways to compute all the subset of a given list
+# TODO: stack implementation to be completed
 class Stack():
     def __init__(self):
         pass
