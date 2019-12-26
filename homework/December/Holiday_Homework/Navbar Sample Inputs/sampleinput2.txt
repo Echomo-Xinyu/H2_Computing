@@ -1,0 +1,6 @@
+National Junior College
+4
+For Students,/students
+For Staff,/staff
+Curriculum,/curriculum
+Admission,/admission

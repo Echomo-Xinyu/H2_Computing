@@ -17,7 +17,7 @@ def task1():
 def createform():
 	return render_template("createform.html")
 
-#TASK1 - create form html
+# TASK1 - create html form
 @app.route('/createform2', methods=['POST'])
 def createform2():
 	try:
@@ -54,25 +54,25 @@ def createform2():
 		f.write(s)
 		for i in range(1, len(command) - 1):
 			temp = command[i].split(',')
-			fieldname = temp[0]
-			fieldtype = temp[1]
+			field_name = temp[0]
+			field_type = temp[1]
 			fieldmax = 1000
 			if(len(temp) > 2):
 				fieldmax = temp[2]
-			print(fieldtype)
-			if(fieldtype == 'text' or fieldtype == 'file' or fieldtype == 'number' or fieldtype == 'password'):
+			print(field_type)
+			if(field_type == 'text' or field_type == 'file' or field_type == 'number' or field_type == 'password'):
 				f.write('		<div>\n')
-				f.write('			<label for={0}>{1}</label>\n'.format(fieldname, fieldname))
-				f.write('			<input name=\'{0}\' type=\'{1}\' maxlength={2}>\n'.format(fieldname, fieldtype, fieldmax))
+				f.write('			<label for={0}>{1}</label>\n'.format(field_name, field_name))
+				f.write('			<input name=\'{0}\' type=\'{1}\' maxlength={2}>\n'.format(field_name, field_type, fieldmax))
 				f.write('		</div>\n')
-			elif(fieldtype =='textarea'):
+			elif(field_type =='textarea'):
 				f.write('		<div>\n')
-				f.write('			<label for={0}>{1}</label>\n'.format(fieldname, fieldname))
-				f.write('			<textarea name="{0}" maxlength={1}></textarea>\n'.format(fieldname, fieldmax))
+				f.write('			<label for={0}>{1}</label>\n'.format(field_name, field_name))
+				f.write('			<textarea name="{0}" maxlength={1}></textarea>\n'.format(field_name, fieldmax))
 				f.write('		</div>\n')
-			elif(fieldtype == 'button'):
+			elif(field_type == 'button'):
 				f.write('		<div>\n')
-				f.write('			<button type="{1}">{0}</button>\n'.format(fieldname, fieldtype))
+				f.write('			<button type="{1}">{0}</button>\n'.format(field_name, field_type))
 				f.write('		</div>\n')
 			else:
 				print("exception - ", command[i])
@@ -98,90 +98,90 @@ def createsql():
 def createsql2():
 	try:
 		f = request.files["createsql_command"]
-		fieldname = []
-		fieldtype = []
-		original_fieldtype = []
-		tablename = ''
+		field_name = []
+		field_type = []
+		original_field_type = []
+		table_name = ''
 		cachelast = None
-		print('passed')
+		# print('passed')
 		for line in f:
 			line = line.strip()
 			line = line.decode('utf-8')
 			temp = line.split(',')
 			if(len(temp) == 1):
-				tablename = temp[0]
+				table_name = temp[0]
 			else:
 				cachelast = temp[1]
 				if(temp[1] == 'file' or temp[1] == 'text' or temp[1] == 'textarea'):
-					fieldname.append(temp[0])
-					fieldtype.append('TEXT')
-					original_fieldtype.append(temp[1])
+					field_name.append(temp[0])
+					field_type.append('TEXT')
+					original_field_type.append(temp[1])
 				elif(temp[1] == 'number' or temp[1] == 'password'):
-					fieldname.append(temp[0])
-					fieldtype.append('INTEGER')
-					original_fieldtype.append(temp[1])
+					field_name.append(temp[0])
+					field_type.append('INTEGER')
+					original_field_type.append(temp[1])
 				else:
 					continue
 		f.close()
-		print('passed')
+		# print('passed')
 
 		#dynamically creating table - if it doesnt exist
-		t = open(tablename + '.py', 'w')
+		t = open(table_name + '.py', 'w')
 		t.write('from flask import *\n')
 		t.write('import sqlite3\n')
-		t.write('app = Flask("__name__")\n')
+		t.write('app = Flask("__name__")\n\n')
 		t.write("@app.route('/')\n")
 		t.write("def root():\n")
-		t.write('	return render_template("{0}_generated.html")\n'.format(tablename))
+		t.write('	return render_template("{0}_generated.html")\n'.format(table_name))
 
 		t.write("@app.route('{0}', methods=[\"POST\"])\n".format(cachelast))
 		t.write("def submit():\n")
-		t.write('	tablename = "generatedTable"\n')
+		t.write('	table_name = "generatedTable"\n')
 		t.write("	con = sqlite3.connect('generated.db')\n")
-		t.write("	fielddata = [None for i in range({0})]\n".format(len(fieldname)))
+		t.write("	fielddata = [None for i in range({0})]\n".format(len(field_name)))
 		t.write("	try:\n")
-		t.write("		command = 'CREATE TABLE IF NOT EXISTS {0}(refID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT)'.format(tablename)\n")
+		t.write("		command = 'CREATE TABLE IF NOT EXISTS {0}(refID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT)'.format(table_name)\n")
 		t.write("		con.execute(command)\n")
-		for i in range(0, len(fieldname)):
-			t.write("		command = \"ALTER TABLE '{0}' ADD '{1}' '{2}'\".format(tablename, " + '"' + str(fieldname[i]) + '"' + ',' + '"' + str(fieldtype[i]) + '")\n')
+		for i in range(0, len(field_name)):
+			t.write("		command = \"ALTER TABLE '{0}' ADD '{1}' '{2}'\".format(table_name, " + '"' + str(field_name[i]) + '"' + ',' + '"' + str(field_type[i]) + '")\n')
 			t.write("		con.execute(command)\n")
 		t.write("	except:\n")
 		t.write("		pass\n")
-		print('passed')
+		# print('passed')
 
-		#code to retrieve input to form for files
-		t.write("	fielddata = [None for i in range({0})]\n".format(len(fieldname)))
-		if 'file' in original_fieldtype:
-			for i in range(len(original_fieldtype)):
-				if original_fieldtype[i] == 'file':
+		# code to retrieve input to form for files
+		t.write("	fielddata = [None for i in range({0})]\n".format(len(field_name)))
+		if 'file' in original_field_type:
+			for i in range(len(original_field_type)):
+				if original_field_type[i] == 'file':
 					t.write("	try:\n")
-					t.write("		if '{0}' in request.files:\n".format(fieldname[i]))
-					t.write("			filename = '{0}'\n".format(fieldname[i]))
-					t.write("			fielddata[{0}] = '{1}.in'\n".format(i, fieldname[i]))
+					t.write("		if '{0}' in request.files:\n".format(field_name[i]))
+					t.write("			filename = '{0}'\n".format(field_name[i]))
+					t.write("			fielddata[{0}] = '{1}.in'\n".format(i, field_name[i]))
 					t.write("			inputfile = request.files[filename]\n")
 					t.write("			import os\n")
 					t.write("			try:\n")
-					t.write("				os.remove('static/{0}.in')\n".format(fieldname[i]))
+					t.write("				os.remove('static/{0}.in')\n".format(field_name[i]))
 					t.write("			except:\n")
 					t.write("				pass\n")
-					t.write("			inputfile.save('static/{0}.in')\n".format(fieldname[i])) #generic format for file, can be accessed as per normal
+					t.write("			inputfile.save('static/{0}.in')\n".format(field_name[i])) #generic format for file, can be accessed as per normal
 					t.write("	except:\n")
 					t.write("		return 'Invalid Input'\n")
-		print('passed')
+		# print('passed')
 
-		#code to retrieve data for normal input
+		# retrieve data for normal input
 		t.write('	try:\n')
-		for i in range(len(fieldname)):
+		for i in range(len(field_name)):
 			t.write('		if fielddata[{0}] == None:\n'.format(i))
-			t.write('			fielddata[{0}] = request.form["{1}"]\n'.format(i, fieldname[i]))
+			t.write('			fielddata[{0}] = request.form["{1}"]\n'.format(i, field_name[i]))
 		t.write('		for i in range(len(fielddata)):\n')
 		t.write('			if fielddata[i] == None or fielddata[i] == \'\' or len(fielddata[i]) == 0: return "Invalid Input"\n')
-		print('passed')
+		# print('passed')
 
-		#INSERT Code - Special formatting
+		# INSERT Code - Special formatting
 		t.write('		con.execute("INSERT INTO generatedTable(')
 		first = True
-		for i in fieldname:
+		for i in field_name:
 			if first:
 				t.write('\'{0}\''.format(i))
 				first = 0
@@ -189,9 +189,9 @@ def createsql2():
 				t.write(', \'{0}\''.format(i))
 		t.write(') VALUES(')
 		
-		print('passed')
+		# print('passed')
 		first = True
-		for i in fieldname:
+		for i in field_name:
 			if first:
 				t.write('?')
 				first = 0
@@ -199,9 +199,9 @@ def createsql2():
 				t.write(', ?')
 		t.write(')", (')
 
-		print('passed')
+		# print('passed')
 		first = True
-		for i in range(len(fieldname)):
+		for i in range(len(field_name)):
 			if first: 
 				t.write('fielddata[{0}]'.format(i))
 				first = False
@@ -210,15 +210,15 @@ def createsql2():
 		t.write('))\n')
 		t.write('		import os\n')
 		t.write('		con.row_factory = sqlite3.Row\n')
-		for j in range(len(original_fieldtype)):
-			if original_fieldtype[j] != 'file': continue
+		for j in range(len(original_field_type)):
+			if original_field_type[j] != 'file': continue
 			t.write("		refID = None\n")
-			t.write("		cursor = con.execute('SELECT refID FROM generatedTable WHERE \"{0}\"=\"{1}.in\"')\n".format(fieldname[j], fieldname[j]))
+			t.write("		cursor = con.execute('SELECT refID FROM generatedTable WHERE \"{0}\"=\"{1}.in\"')\n".format(field_name[j], field_name[j]))
 			t.write("		r = cursor.fetchone()\n")
 			t.write("		refID = r['refID']\n")
-			t.write("		con.execute(\"UPDATE generatedTable SET '{0}'=? WHERE refID=?\", (str(refID) + str('{1}'), int(refID)))\n".format(fieldname[j], fieldname[j]))
-			t.write("		newname = str('static/') + str(refID) + str('{0}')\n".format(fieldname[j]))
-			t.write("		os.rename('static/{0}', newname)\n".format(str(fieldname[j] + ".in")))
+			t.write("		con.execute(\"UPDATE generatedTable SET '{0}'=? WHERE refID=?\", (str(refID) + str('{1}'), int(refID)))\n".format(field_name[j], field_name[j]))
+			t.write("		newname = str('static/') + str(refID) + str('{0}')\n".format(field_name[j]))
+			t.write("		os.rename('static/{0}', newname)\n".format(str(field_name[j] + ".in")))
 		t.write('	except:\n')
 		t.write('		return "Invalid Input"\n')
 		t.write('	con.commit()\n')
@@ -264,9 +264,8 @@ def navbar2():
 		t = open("{0}.html".format(title), 'w')
 		c = open("navbar_template.txt", 'r')
 		cnt = 0
-		
 		for line in c:
-			#line = line.decode('utf-8')
+			# line = line.decode('utf-8')
 			if cnt == 3:
 				t.write("	<title>{0}</title>\n".format(title))
 			elif cnt > 41:

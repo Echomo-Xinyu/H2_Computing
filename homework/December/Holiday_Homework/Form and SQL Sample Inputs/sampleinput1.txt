@@ -1,8 +1,8 @@
-Personal Details
-Name,text,30
-Tel,number
-Address,textarea,100
-Email,text
-Mugshot,file
+Email Signup
+First Name,text,30
+Last Name,text,30
+Domain,text,50
+Number,number
+Photo,file
 Cancel,button
-Submit,/submit
+Signup,/submit
