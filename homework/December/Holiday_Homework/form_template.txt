@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Title</title>
+	<style type="text/css">
+		body {
+		    margin: 0px;
+		    font-family: "Segoe UI", sans-serif;
+		}
+		a{
+		    font-size: 1.1em;
+		    text-decoration-line: none;
+		    color: black;
+		    transition: color 0.2s;
+		}
+		a:hover{
+		    color: #6400e4;
+		}
+		form {
+		    margin: 10px auto;
+		    width: 25%;
+		    padding: 1em;
+		    border: 1px solid #CCC;
+		    border-radius: 1em;
+		}
+		form div + div {
+		    margin-top: 1em;
+		}
+		label {
+		    display: inline-block;
+		    width: 60px;
+		    height:1.5em;
+		    text-align: right;
+		    margin-right: 5px;
+		}
+		input, textarea {
+		    font: 1em sans-serif;
+		    width: 300px;
+		    height:1.5em;
+		    box-sizing: border-box;
+		    border: 1px solid #999;
+		}
+		textarea {
+		    vertical-align: top;
+		    height: 5em;
+		}
+	</style>
+</head>
+<body>
+	<form method = "POST" action="/goto" enctype="multipart/form-data">
+		<div>
+			<label>Label: </label>
+			<input type="text" name="Label">
+		</div>
+
+		<div>
+			<label>Label2: </label>
+			<textarea name="label2"></textarea>
+		</div>
+		<div>
+			<button type="submit">Submit</button>
+		</div>
+		<div>
+			<label>Image: </label>
+			<input type="file" name="img">
+		</div>
+		<div>
+			<button type="reset">Cancel</button>
+		</div>
+	</form>
+</body>
+</html>

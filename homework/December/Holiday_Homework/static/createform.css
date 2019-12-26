@@ -1,0 +1,33 @@
+body{
+	margin: 0;
+}
+
+#header{
+	background-color: white;
+	height: 3em;
+	border-bottom: 1px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#headertitle{
+	font-family: Playfair Display;
+	text-decoration: none;
+	font-style: italic;
+	color: black;
+	font-size: 2em;
+}
+
+form{
+	padding: 20px;
+	border: 1px solid grey;
+	margin: 20px auto;
+	border-radius: 5px;
+	width: 50%;
+}
+
+button{
+	margin: 5px;
+	display: block;
+}

@@ -1,0 +1,8 @@
+Email Sign-up
+First Name,text,30
+Last Name,text,30
+Domain,text,50
+Number,foo
+Photo,bar
+Cancel,button
+Signup,/
