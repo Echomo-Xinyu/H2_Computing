@@ -1,7 +1,0 @@
-Bank Account
-Name,text
-Tel,number
-Favourite Quote,textarea
-Full Photo,file
-Mugshot,file
-Submit,/sub

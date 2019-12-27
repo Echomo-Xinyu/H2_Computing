@@ -1,3 +1,0 @@
-Bank
-Login,/login
-Sign Up,/signup

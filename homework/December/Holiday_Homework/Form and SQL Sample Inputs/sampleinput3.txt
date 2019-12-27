@@ -1,8 +1,0 @@
-Personal Details
-Name,text,30
-Tel,number
-Address,textarea,100
-Email,text
-Mugshot,file
-Cancel,button
-Submit,/submit
