@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title</title>
+    <style type="text/css">
+        body {
+            margin: 0px;
+            font-family: "Segoe UI", sans-serif;
+        }
+        
+        a {
+            font-size: 1.1em;
+            text-decoration-line: none;
+            color: black;
+            transition: color 0.2s;
+        }
+        
+        a:hover {
+            color: #6400e4;
+        }
+        
+        form {
+            margin: 10px auto;
+            width: 25%;
+            padding: 1em;
+            border: 1px solid #CCC;
+            border-radius: 1em;
+        }
+        
+        form div+div {
+            margin-top: 1em;
+        }
+        
+        label {
+            display: inline-block;
+            width: 60px;
+            height: 1.5em;
+            text-align: right;
+            margin-right: 5px;
+        }
+        
+        input,
+        textarea {
+            font: 1em sans-serif;
+            width: 300px;
+            height: 1.5em;
+            box-sizing: border-box;
+            border: 1px solid #999;
+        }
+        
+        textarea {
+            vertical-align: top;
+            height: 5em;
+        }
+    </style>
+</head>
+
+	<form action="/submit" enctype="multipart/form-data" method="POST">
+		<div>
+			<label for=First Name>First Name</label>
+			<input name='First Name' type='text' maxlength=30>
+		</div>
+		<div>
+			<label for=Last Name>Last Name</label>
+			<input name='Last Name' type='text' maxlength=30 >
+		</div>
+		<div>
+			<label for=Domain>Domain</label>
+			<input name='Domain' type='text' maxlength=50>
+		</div>
+		<div>
+			<label for=Number>Number</label>
+			<input name='Number' type='number' maxlength=1000>
+		</div>
+		<div>
+			<label for=Photo>Photo</label>
+			<input name='Photo' type='file' maxlength=1000>
+		</div>
+		<div>
+			<button type="button">Cancel</button>
+		</div>
+		<div>
+			<button type="submit">Signup</button>
+		</div>
+	</form>
+</body>
+</html>
