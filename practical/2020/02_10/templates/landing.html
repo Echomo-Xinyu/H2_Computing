@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>calculate your A level score!</title>
+    <link rel="stylesheet" href="../static/landing.css">
+</head>
+
+<body>
+    <h1> Calculate your A level RP</h1>
+    <form action="/calcualate" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="subj1">H2 Subject grade</label><span class="required">*</span>
+            <input type="text" id="subj1" name="subj1">
+        </div>
+        <div>
+            <label for="subj2">H2 Subject grade</label><span class="required">*</span>
+            <input type="text" id="subj2" name="subj2" required>
+        </div>
+        <div>
+            <label for="subj3">H2 Subject grade</label><span class="required">*</span>
+            <input type="text" id="subj3" name="subj3" required>
+        </div>
+        <div>
+            <label for="subj4">lowest H2 Subject grade or H1 Subject grade</label><span class="required">*</span>
+            <input type="text" id="subj4" name="subj4" required>
+        </div>
+        <div>
+            <label for="subj5">Project Work score</label><span class="required">*</span>
+            <input type="text" id="subj5" name="subj5" required>
+        </div>
+        <div>
+            <label for="subj6">General Paper score</label><span class="required">*</span>
+            <input type="text" id="subj6" name="subj6" required>
+        </div>
+        <div>
+            <label for="mt">Mother Tongue</label><span class="required">*</span>
+            <input type="text" id="pw" name="mt" required>
+        </div>
+        <div class="button">
+            <button type="submit">Calculate Score</button>
+        </div>
+</body>
+
+</html>
