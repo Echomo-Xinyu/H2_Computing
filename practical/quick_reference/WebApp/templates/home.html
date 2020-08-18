@@ -1,0 +1,54 @@
+<html>
+<head>
+<style>
+	body {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		
+	}
+	table, th, tr, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+		margin: 2px;
+	}
+	div {
+		display: flex;
+		justify-content: center;
+		margin: 2px;
+	}
+	
+</style>
+
+</head>
+
+<body>
+	<table>
+	<th>Flavour</th>
+	<th>Price</th>
+	{% for i in f_i %}
+		<tr>
+		<td>{{i}}</td>
+		<td>{{f_i[i]}}</td>
+		</tr>
+	{% endfor %}
+	</table>
+	<form action="/submit" method="post">
+	<div>
+		<label>Name</label>
+		<input type="text" name="name">
+	</div>
+	<div>
+		<label>Flavour</label>
+		<input type="text" name="flavour">
+	</div>
+	<div>
+		<label>Quantity</label>
+		<input type="text" name="quantity">
+	</div>
+	<div>
+		<button type="submit">Submit</button>
+	</div>
+	</form>
+</body>
+</html>
