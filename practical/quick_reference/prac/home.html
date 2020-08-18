@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+    <div>
+        <table>
+        <th></th>
+        <th></th>
+        {% for i in f_i %}
+        <tr>
+            <td>{{% i["name"] %}}</td>
+            <td>{{% i["id"] %}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+        <form action="/submit" method="POST">
+            <div>
+                <label>Name</label>
+                <input type="text" name="name">
+            </div>
+            <button type="submit">Submit</a>
+        </form>
+    </div>
+</body>
+</html>
