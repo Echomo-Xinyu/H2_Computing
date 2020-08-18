@@ -25,10 +25,3 @@ CREATE TABLE "Result" (
 	FOREIGN KEY("MatricNo") REFERENCES "Student"("MatricNo"),
 	PRIMARY KEY("MatricNo","TestID")
 );
-
-
-SELECT Student.Class, Student.IndexNo, Student.Name, Test.TestID, Result.Score, Test.MaxScore
-FROM Student, Test, Result
-WHERE Student.MatricNo = Result.MatricNo AND Test.TestID = Result.TestID
-AND Student.Class = "19J08" and Test.Year = "2020" and Test.Subject = "Economics"
-ORDER BY Test.TestID ASC, Student.IndexNo ASC
