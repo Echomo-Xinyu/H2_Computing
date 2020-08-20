@@ -15,3 +15,10 @@ for line in handle:
     data_raw = line.strip().split(",")
     # ...
 handle.close()
+
+# read json
+import json
+f = open("a.json", "r")
+# this will give a list of dictionary
+data = json.load(f)
+print(data)
